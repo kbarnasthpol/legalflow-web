@@ -23,8 +23,10 @@ export default function NuevoClientePage() {
     try {
       // Mandamos el objeto completo a Go
       await api.post('/clientes', formData)
-      alert('Cliente creado con éxito')
-      router.push('/dashboard') // Volvemos al inicio
+      // Al guardar con éxito:
+      alert("Cliente guardado con éxito");
+      router.push('/dashboard'); // Rediriges
+      router.refresh(); // <-- ESTA LÍNEA es la clave para que Next.js limpie la caché
     } catch (error) {
       console.error(error)
       alert('Error al crear cliente. Revisa los datos.')

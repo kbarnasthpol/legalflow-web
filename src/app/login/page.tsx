@@ -1,8 +1,9 @@
 'use client' // Le dice a Next.js que esto tiene interacción del usuario
 
 import { useState } from 'react'
+import { GoogleLogin } from '@react-oauth/google'
 import { useRouter } from 'next/navigation'
-import api from '../lib/axios' // El puente que creamos recién
+import api from '../../lib/axios' // El puente que creamos recién
 
 export default function LoginPage() {
   // En Go declararías: var email string
@@ -49,6 +50,32 @@ export default function LoginPage() {
             Entrar
           </button>
         </form>
+        <div className="mt-6 flex flex-col items-center gap-4">
+  <div className="flex items-center w-full gap-2">
+    <hr className="flex-grow border-slate-200" />
+    <span className="text-slate-400 text-sm">O también</span>
+    <hr className="flex-grow border-slate-200" />
+  </div>
+
+  <GoogleLogin
+    onSuccess={async (credentialResponse) => {
+      try {
+        const res = await api.post('/auth/google', {
+          token: credentialResponse.credential 
+        })
+        
+        localStorage.setItem('token', res.data.token)
+        router.push('/dashboard')
+      } catch (error) {
+        alert('Error al autenticar con Google')
+      }
+    }}
+    onError={() => {
+      console.log('Login Failed')
+    }}
+    useOneTap // Esto muestra el popup flotante de Google, ¡queda muy pro!
+  />
+</div>
       </div>
     </main>
   )

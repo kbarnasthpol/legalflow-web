@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Node
+node_modules/
+.next/
+out/
+
+# Go
+bin/
+*.exe
+
+# Variables de entorno (Seguridad)
+.env
+.env.local
+
+# IDEs
+.vscode/

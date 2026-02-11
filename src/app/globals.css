@@ -28,11 +28,13 @@
   --color-blossom-100: #eddee2; /* Fondo notificación crítica */
   --color-blossom-700: #633642; /* Botones ELIMINAR / Vencimientos */
   --color-blossom-950: #170c0f; /* Estado fallido / Alertas máximas */
+  /* Definimos la familia de fuente */
+  --font-sans: var(--font-primary), ui-sans-serif, system-ui;
 }
 
 body {
   /* Usamos tus nuevas variables para el estilo base del cuerpo */
   background-color: var(--color-iron-100);
   color: var(--color-iron-950);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }

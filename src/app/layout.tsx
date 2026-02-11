@@ -3,7 +3,7 @@ import { usePathname } from 'next/navigation'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { Lexend } from 'next/font/google'; // Cambia Montserrat por la que elijas
 import "./globals.css"
-import Sidebar from '@/components/ui/Sidebar'
+import Sidebar from '@/components/layout/Sidebar'
 
 const myFont = Lexend({
   subsets: ['latin'],

@@ -1,16 +1,17 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Users, Briefcase, CreditCard, LayoutDashboard } from 'lucide-react'
+import { Users, Briefcase, CreditCard, LayoutDashboard, FolderOpen, HardDrive} from 'lucide-react'
 
 export default function Sidebar() {
   const pathname = usePathname()
 
   const menuItems = [
     { name: 'Inicio', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Clientes', href: '/dashboard/clientes/nuevo', icon: Users },
+    { name: 'Clientes', href: '/dashboard/clientes', icon: Users },
     { name: 'Casos', href: '/dashboard/casos', icon: Briefcase },
     { name: 'Pagos', href: '/dashboard/pagos', icon: CreditCard },
+    { icon: HardDrive, label: 'Google Drive', href: '/dashboard/drive' }
   ]
 
   return (

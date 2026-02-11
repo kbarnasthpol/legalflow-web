@@ -1,9 +1,10 @@
 'use client' // Le dice a Next.js que esto tiene interacción del usuario
-
+import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input';
 import { useState } from 'react'
 import { GoogleLogin } from '@react-oauth/google'
 import { useRouter } from 'next/navigation'
-import api from '../../lib/axios' // El puente que creamos recién
+import api from '@/lib/axios' // El puente que creamos recién
 
 export default function LoginPage() {
   // En Go declararías: var email string
@@ -31,29 +32,29 @@ export default function LoginPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96 text-black">
-        <h1 className="text-2xl font-bold mb-6">LegalFlow Login</h1>
+      <div className="bg-iron-100 p-8 rounded-lg shadow-md w-96 text-black">
+        <h1 className="text-maya-950 text-2xl font-bold mb-6">LegalFlow</h1>
+          <h1 className="text-maya-950 text-2xl font-bold mb-6">LOGIN</h1>
+
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
-          <input 
+          <Input 
             type="email" 
             placeholder="Email" 
-            className="border p-2 rounded text-black"
+           className="border border-gray-300 focus:border-legal-blue focus:ring-1 focus:ring-legal-blue outline-none p-2 rounded-md"
             onChange={(e) => setEmail(e.target.value)} // Captura lo que escribís
           />
-          <input 
+          <Input 
             type="password" 
             placeholder="Contraseña" 
-            className="border p-2 rounded text-black"
+            className="border border-gray-300 focus:border-legal-blue focus:ring-1 focus:ring-legal-blue outline-none p-2 rounded-md"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-            Entrar
-          </button>
+          <Button type="submit" variant='success'>Entrar</Button>
         </form>
         <div className="mt-6 flex flex-col items-center gap-4">
   <div className="flex items-center w-full gap-2">
     <hr className="flex-grow border-slate-200" />
-    <span className="text-slate-400 text-sm">O también</span>
+    <span className="text-slate-400 text-sm">O</span>
     <hr className="flex-grow border-slate-200" />
   </div>
 

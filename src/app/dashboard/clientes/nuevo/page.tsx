@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import api from '../../../../lib/axios'
-import PrimaryButton from '@/src/components/Button'
+import PrimaryButton from '@/components/ui/PrimaryButton'
 
 export default function NuevoClientePage() {
   const router = useRouter()

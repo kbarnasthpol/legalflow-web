@@ -2,7 +2,7 @@
 import { usePathname } from 'next/navigation'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import "./globals.css"
-import Sidebar from '../components/Sidebar'
+import Sidebar from '@/components/ui/Sidebar'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()

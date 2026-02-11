@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import api from '../../lib/axios'
 import { useRouter } from 'next/navigation' // Importamos el "conduce-páginas"
-import PrimaryButton from '@/src/components/Button'
+import PrimaryButton from '@/components/ui/PrimaryButton'
 import { Users, Briefcase, DollarSign } from 'lucide-react'
 interface StatCardProps {
   title: string;

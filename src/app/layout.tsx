@@ -8,6 +8,8 @@ import Sidebar from '@/components/ui/Sidebar'
 const myFont = Lexend({
   subsets: ['latin'],
   display: 'swap',
+  // Cargamos los pesos: 300 (fino), 400 (normal), 600 (semibod), 700 (bold)
+  weight: ['300', '400', '600', '700'],
   variable: '--font-primary', // Creamos una variable CSS
 });
 

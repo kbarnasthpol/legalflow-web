@@ -4,37 +4,20 @@
 @source "../components";
 
 @theme {
-  /* --- MAYA BLUE (Identidad Principal) --- */
-  --color-maya-100: #ccebff; /* Fondos de tarjetas seleccionadas / sidebar */
-  --color-maya-600: #007acc; /* Botones principales y acciones importantes */
-  --color-maya-950: #001524; /* Texto títulos */
 
-  /* --- AQUAMARINE (Notificaciones y Estados leves) --- */
-  --color-aqua-100: #ccfff0; /* Etiquetas y estados no urgentes */
-  --color-aqua-700: #00996b; /* Indicadores de estados activos */
-  --color-aqua-950: #002419; /* Texto sobre aqua */
-
-  /* --- MINT LEAF (Éxitos y Confirmaciones) --- */
-  --color-mint-50: #ecf9f4;  /* Fondo éxito leve */
-  --color-mint-700: #257454; /* Éxito medio / Casos cerrados */
-  --color-mint-950: #091b14; /* Éxito alto */
-
-  /* --- IRON GREY (Estructura y Neutrales) --- */
-  --color-iron-100: #e3e7e8; /* Fondos de páginas */
-  --color-iron-700: #465253; /* Bordes */
-  --color-iron-950: #101313; /* Texto secundario */
-
-  /* --- SOFT BLOSSOM (Crítico y Alertas) --- */
-  --color-blossom-100: #eddee2; /* Fondo notificación crítica */
-  --color-blossom-700: #633642; /* Botones ELIMINAR / Vencimientos */
-  --color-blossom-950: #170c0f; /* Estado fallido / Alertas máximas */
-  /* Definimos la familia de fuente */
-  --font-sans: var(--font-primary), ui-sans-serif, system-ui;
+  --color-beige:#f2f3d9; /* Letras, textos, etc.*/
+  --color-azul:#222e50;/* Color de la identidad*/
+  --color-esmeralda:#2ca880; /* Color exitos o cosass buenas*/
+  --color-coral:#f96f5d; /* Color errores, o cosas negativas*/
+  --color-gris:#626267;/* Color principal, el que mas predomina, color fondo*/
+  --color-dorado:#fe9920; /*Color detalles para contrastar con el azul*/
+  
+  --font-sans: var(--font-lexend), ui-sans-serif, system-ui;
 }
 
 body {
   /* Usamos tus nuevas variables para el estilo base del cuerpo */
-  background-color: var(--color-iron-100);
-  color: var(--color-iron-950);
+  background-color: var(--color-beige);
+  color: var(--color-beige);
   font-family: var(--font-sans);
 }

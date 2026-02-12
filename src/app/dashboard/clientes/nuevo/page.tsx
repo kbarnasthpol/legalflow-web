@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import api from '../../../../lib/axios'
-import PrimaryButton from '@/components/ui/PrimaryButton'
+import Button from '@/components/ui/Button'
 
 export default function NuevoClientePage() {
   const router = useRouter()
@@ -80,9 +80,9 @@ export default function NuevoClientePage() {
           </select>
         </div>
 
-        <PrimaryButton>
+        <Button variant="success">
           GUARDAR CLIENTE NUEVO
-        </PrimaryButton>
+        </Button>
       </form>
     </div>
   )

@@ -1,44 +1,86 @@
 'use client'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Users, Briefcase, CreditCard, LayoutDashboard, FolderOpen, HardDrive} from 'lucide-react'
+import SidebarItem from '@/components/ui/sidebar-flecha' // Importamos el nuevo componente
+import { 
+  Users, 
+  Briefcase, 
+  CreditCard, 
+  LayoutDashboard, 
+  Calendar, 
+  Settings, 
+  LogOut,
+  Hand,
+} from 'lucide-react'
+import Link from 'next/link'
 
 export default function Sidebar() {
   const pathname = usePathname()
 
   const menuItems = [
-    { name: 'Inicio', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Clientes', href: '/dashboard/clientes', icon: Users },
-    { name: 'Casos', href: '/dashboard/casos', icon: Briefcase },
-    { name: 'Pagos', href: '/dashboard/pagos', icon: CreditCard },
-    { icon: HardDrive, label: 'Google Drive', href: '/dashboard/drive' }
+    { name: 'INICIO', href: '/dashboard', icon: LayoutDashboard },
+    { name: 'CLIENTES', href: '/dashboard/clientes', icon: Users },
+    { name: 'CASOS', href: '/dashboard/casos', icon: Briefcase },
+    { name: 'PAGOS', href: '/dashboard/pagos', icon: CreditCard },
+    { name: 'CALENDARIO', href: '/dashboard/calendario', icon: Calendar },
   ]
 
   return (
-    <div className="w-64 bg-slate-900 h-screen text-white p-4 fixed left-0 top-0">
-      <div className="mb-10 p-2 text-2xl font-bold border-b border-slate-700">
-        LegalFlow
+    <div className="w-64 bg-azul h-screen text-beige p-4 fixed left-0 top-0 flex flex-col font-lexend">
+      {/* Logo / Título */}
+      <div className="mb-10 p-2 text-2xl font-bold border-b border-gris text-beige">
+        LEGALFLOW
       </div>
       
-      <nav className="space-y-2">
-        {menuItems.map((item) => {
-          const Icon = item.icon
-          const isActive = pathname === item.href
-          
-          return (
-            <Link 
-              key={item.name} 
-              href={item.href}
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${
-                isActive ? 'bg-blue-600 text-white' : 'hover:bg-slate-800 text-slate-400'
-              }`}
-            >
-              <Icon size={20} />
-              {item.name}
-            </Link>
-          )
-        })}
+      {/* Navegación Principal */}
+      <nav className="space-y-2 flex-1">
+        {menuItems.map((item) => (
+          <SidebarItem 
+            key={item.name}
+            href={item.href}
+            icon={item.icon}
+            label={item.name}
+            isActive={pathname === item.href}
+          />
+        ))}
       </nav>
+
+      {/* Sección Inferior */}
+      <div className="pt-4 border-t border-azul space-y-1">
+        {/* Ítem de Configuración con engranaje giratorio */}
+        <Link
+          href="/dashboard/configuracion"
+          className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${
+            pathname === '/dashboard/configuracion' 
+              ? 'bg-dorado text-azul shadow-lg shadow-gris' 
+              : 'hover:bg-beige hover:text-azul text-beige'
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            <Settings 
+              size={20} 
+              className="transition-transform duration-500 group-hover:rotate-90" 
+            />
+            <span className="font-medium uppercase">CONFIGURACIÓN</span>
+          </div>
+        </Link>
+
+        {/* Botón de Cerrar Sesión con mano saludando */}
+        <button 
+          onClick={() => console.log("Cerrando sesión...")}
+          className="w-full group flex items-center justify-between p-3 rounded-lg transition-all duration-300 text-coral hover:bg-coral hover:text-beige mt-1"
+        >
+          <div className="flex items-center gap-3">
+            <LogOut size={20} className="transition-transform duration-300 group-hover:scale-110" />
+            <span className="font-medium uppercase">CERRAR SESIÓN</span>
+          </div>
+
+          {/* Mano saludando que aparece desde la derecha (reemplaza a la flecha) */}
+          <Hand 
+            size={18} 
+            className="transition-all duration-300 transform opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
+          />
+        </button>
+      </div>
     </div>
   )
 }

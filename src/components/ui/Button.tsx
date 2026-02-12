@@ -26,10 +26,10 @@ export default function Button({
 
   // Variantes usando tu paleta personalizada
  const variants = {
-    primary: "bg-maya-600 text-white hover:bg-maya-950 shadow-sm",
-    success: "bg-mint-700 text-white hover:bg-mint-950 shadow-sm",
-    danger: "bg-blossom-700 text-white hover:bg-blossom-950 shadow-sm",
-    outline: "border-2 border-iron-700 text-iron-700 hover:bg-iron-100"
+    primary: "bg-azul text-beige hover:bg-beige shadow-sm hover:text-azul hover:border-azul",
+    success: "bg-esmeralda text-beige hover:border-beige shadow-sm",
+    danger: "bg-coral text-beige hover:border-gris shadow-sm",
+    outline: "border-2 border-gris text-gris hover:bg-beige bg-beige hover:text-beige"
   };
 
   return (

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import api from '../../lib/axios'
 import { useRouter } from 'next/navigation' // Importamos el "conduce-páginas"
-import PrimaryButton from '@/components/ui/PrimaryButton'
+import Button from '@/components/ui/Button'
 import { Users, Briefcase, DollarSign } from 'lucide-react'
 interface StatCardProps {
   title: string;
@@ -68,10 +68,10 @@ const [stats, setStats] = useState({ clientes: 0, casos: 0, recaudado: 0 })
         <h1 className="text-2xl font-bold text-black">MIS CLIENTES</h1>
         
         {/* Este botón hace la magia */}
-        <PrimaryButton
+        <Button variant="success"
           onClick={() => router.push('/dashboard/clientes/nuevo')}>
           + AGREGAR CLIENTE NUEVO
-        </PrimaryButton>
+        </Button>
       </div>
       
       <div className="grid gap-4">

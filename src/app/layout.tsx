@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Envolvemos TODA la app con el Provider de Google */}
         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
           {!isLoginPage && <Sidebar />}
-          <main className={`${!isLoginPage ? 'ml-64' : ''} w-full min-h-screen bg-slate-50`}>
+          <main className={`${!isLoginPage ? 'ml-64' : ''} w-full min-h-screen bg-aqua-medio`}>
             {children}
           </main>
         </GoogleOAuthProvider>

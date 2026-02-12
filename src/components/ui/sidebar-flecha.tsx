@@ -19,20 +19,21 @@ export default function SidebarItem({ href, icon: Icon, label, isActive }: Sideb
           : 'hover:bg-beige hover:text-azul text-beige'
       }`}
     >
-      <div className="flex items-center gap-3">
-        <Icon size={20} className={`transition-transform duration-300 ${!isActive && 'group-hover:scale-110'}`} />
+      <div className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-[5px]">
+        <Icon size={20} />
         <span className="font-medium uppercase tracking-wider">{label}</span>
       </div>
 
       {/* Animación de la flecha */}
-      <ChevronRight 
-        size={18} 
-        className={`transition-all duration-300 transform ${
-          isActive 
-            ? 'opacity-100 translate-x-0' 
-            : 'opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'
-        }`}
-      />
+     <ChevronRight
+  size={18}
+  className="
+    animate-slide-x
+    opacity-0
+    group-hover:opacity-100
+  "
+/>
+
     </Link>
   )
 }

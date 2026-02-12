@@ -21,3 +21,25 @@ body {
   color: var(--color-beige);
   font-family: var(--font-sans);
 }
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(18deg); }
+  50%  { transform: rotate(-12deg); }
+  75%  { transform: rotate(18deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes slide-x {
+  0%,100% { transform: translateX(0); }
+  50%     { transform: translateX(8px); }
+}
+
+/* clases utilitarias */
+.animate-wave {
+  animation: wave 0.9s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
+
+.animate-slide-x {
+  animation: slide-x 0.7s ease-in-out infinite;
+}

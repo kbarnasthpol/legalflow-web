@@ -45,41 +45,45 @@ export default function Sidebar() {
       </nav>
 
       {/* Sección Inferior */}
-      <div className="pt-4 border-t border-azul space-y-1">
+      <div className="pt-4 border-t border-azul space-y-1 ">
         {/* Ítem de Configuración con engranaje giratorio */}
         <Link
           href="/dashboard/configuracion"
-          className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${
+          className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300  ${
             pathname === '/dashboard/configuracion' 
-              ? 'bg-dorado text-azul shadow-lg shadow-gris' 
+              ? 'bg-dorado text-azul shadow-lg shadow-gris ' 
               : 'hover:bg-beige hover:text-azul text-beige'
           }`}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 group-hover:translate-x-[5px]">
             <Settings 
               size={20} 
-              className="transition-transform duration-500 group-hover:rotate-90" 
+              className="transition-all group-hover:animate-spin"
+              style={{ animationDuration: '2s' }}
             />
             <span className="font-medium uppercase">CONFIGURACIÓN</span>
           </div>
         </Link>
 
-        {/* Botón de Cerrar Sesión con mano saludando */}
-        <button 
-          onClick={() => console.log("Cerrando sesión...")}
-          className="w-full group flex items-center justify-between p-3 rounded-lg transition-all duration-300 text-coral hover:bg-coral hover:text-beige mt-1"
-        >
-          <div className="flex items-center gap-3">
-            <LogOut size={20} className="transition-transform duration-300 group-hover:scale-110" />
-            <span className="font-medium uppercase">CERRAR SESIÓN</span>
-          </div>
+        {/* Botón de Cerrar Sesión con mano saludando sin parar */}
+       <button 
+  onClick={() => console.log("Cerrando sesión...")}
+  className="w-full group flex items-center justify-between p-3 rounded-lg transition-all duration-300 text-coral hover:bg-coral hover:text-beige mt-1"
+>
+  <div className="flex items-center gap-3 group-hover:translate-x-[5px]">
+    <LogOut size={20} className="transition-transform duration-300 group-hover:scale-110" />
+    <span className="font-medium uppercase">CERRAR SESIÓN</span>
+  </div>
 
-          {/* Mano saludando que aparece desde la derecha (reemplaza a la flecha) */}
-          <Hand 
-            size={18} 
-            className="transition-all duration-300 transform opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
-          />
-        </button>
+ <Hand
+  size={18}
+  className="
+    animate-wave
+    opacity-0
+    group-hover:opacity-100
+  "
+/>
+</button>
       </div>
     </div>
   )

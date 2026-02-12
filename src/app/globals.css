@@ -20,8 +20,6 @@ body {
   background-color: var(--color-beige);
   color: var(--color-beige);
   font-family: var(--font-sans);
-  border-width: 3px;
-  border-style: dotted;
 }
 @keyframes wave {
   0%   { transform: rotate(0deg); }
@@ -44,4 +42,74 @@ body {
 
 .animate-slide-x {
   animation: slide-x 0.7s ease-in-out infinite;
+}
+@keyframes slide-x-soft {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+.animate-slide-x-soft {
+  animation: slide-x-soft 1.3s ease-in-out infinite;
+}
+
+
+.bg-legal {
+  --icono: url('/patterns/columna.svg');
+  --tamano: 65px; /* un poco más grande se ve mejor */
+  
+  position: relative;
+  background-color: var(--color-beige);
+  min-height: 130px;
+  overflow-x: hidden;
+}
+
+/* IZQUIERDA */
+.bg-legal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background-image: var(--icono);
+  background-repeat: repeat;
+  background-size: 60px;
+
+  /* ❌ quitamos opacity */
+  /* ❌ quitamos filter */
+
+  animation: moverIzquierda 12s linear infinite;
+}
+
+/* DERECHA */
+.bg-legal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background-image: var(--icono);
+  background-repeat: repeat;
+  background-size: 60px;
+  background-position: 30px 23px;
+
+  animation: moverDerecha 18s linear infinite;
+}
+
+/* Animaciones */
+@keyframes moverIzquierda {
+  from { background-position: 0px 0px; }
+  to { background-position: -100px 0px; }
+}
+
+@keyframes moverDerecha {
+  from { background-position: 0px 30px; }
+  to { background-position: 100px 30px; }
+}
+
+/* Contenido siempre arriba */
+.bg-legal > * {
+  position: relative;
+  z-index: 10;
 }

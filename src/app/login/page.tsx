@@ -31,30 +31,30 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-azul">
-      <div className="bg-beige p-8 rounded-lg shadow-md w-96 text-gris ">
-        <h1 className="text-azul text-6xl font-bold mb-6 flex items-center justify-center">LegalFlow</h1>
-          <h1 className="text-azul text-2xl font-bold mb-6 flex items-center justify-center">LOGIN</h1>
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-legal">
+      <div className="bg-azul p-8 rounded-lg shadow-md w-96 text-beige ">
+        <h1 className="text-beige text-6xl font-bold mb-6 flex items-center justify-center">LegalFlow</h1>
+          <h1 className="text-beige text-2xl font-bold mb-6 flex items-center justify-center">LOGIN</h1>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <Input 
             type="email" 
             placeholder="Email" 
-           className="border border-azul focus:border-azul focus:ring-1 focus:ring-azul outline-none p-2 rounded-md"
+           className="bg-azul border-azul  focus:ring-1 focus:ring-dorado outline-none p-2 rounded-md"
             onChange={(e) => setEmail(e.target.value)} // Captura lo que escribís
           />
           <Input 
             type="password" 
             placeholder="Contraseña" 
-            className="border border-azul focus:border-azul focus:ring-1 focus:ring-azul outline-none p-2 rounded-md"
+            className=" focus:ring-1 focus:ring-dorado outline-none p-2 rounded-md"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit" variant='primary'>Entrar</Button>
+          <Button type="submit" variant='login'>INGRESAR</Button>
         </form>
         <div className="mt-6 flex flex-col items-center gap-4">
   <div className="flex items-center w-full gap-2">
     <hr className="flex-grow border-gris" />
-    <span className="text-azul text-sm">O</span>
+    <span className="text-beige text-sm">O</span>
     <hr className="flex-grow border-gris" />
   </div>
 

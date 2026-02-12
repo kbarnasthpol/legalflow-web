@@ -34,16 +34,16 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="p-8 bg-beige min-h-screen font-lexend text-beige">
+    <div className="p-8 bg-legal min-h-screen font-lexend text-beige">
       
       {/* Encabezado */}
-      <div className="flex justify-between items-end mb-8 border-b border-azul pb-4">
-        <div>
-          <h1 className="text-4xl font-bold text-azul uppercase tracking-tighter">Panel de Control</h1>
-          <p className="text-azul/80 font-medium">Gestión integral de tu estudio</p>
+      <div className="flex justify-between items-center px-6 py-8 mb-8 border-5 border-azul bg-azul/90 rounded-xl min-h-[140px]">
+        <div className='flex flex-col justify-center gap-2 text-center'>
+          <h1 className="text-4xl font-bold text-dorado uppercase tracking-tighter">Panel de Control</h1>
+          <p className="text-beige font-medium">Gestión integral de tu estudio</p>
         </div>
         <Button 
-          variant="primary" className="hover:scale-[1.02]"
+          variant="primary" className="hover:scale-[1.05] border-3 border-esmeralda hover:border-transparent"
           onClick={() => router.push('/dashboard/clientes/nuevo')}
         >
           + NUEVO CLIENTE

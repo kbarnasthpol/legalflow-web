@@ -40,7 +40,7 @@ export default function NuevoClientePage() {
   }
 
   return (
-    <div className="p-8 bg-beige min-h-screen">
+    <div className="p-8 bg-legal min-h-screen">
       {/* Botón Volver */}
       <button 
         onClick={() => router.back()}

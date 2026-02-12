@@ -43,7 +43,7 @@ export default function DashboardPage() {
           <p className="text-azul/80 font-medium">Gestión integral de tu estudio</p>
         </div>
         <Button 
-          variant="primary"
+          variant="primary" className="hover:scale-[1.02]"
           onClick={() => router.push('/dashboard/clientes/nuevo')}
         >
           + NUEVO CLIENTE
@@ -54,7 +54,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <StatCard title="Clientes" value={stats.clientes} icon={<Users />} color="bg-azul" textColor="text-dorado" />
         <StatCard title="Casos Activos" value={stats.casos} icon={<Briefcase />} color="bg-azul" textColor="text-esmeralda" />
-        <StatCard title="Recaudación" value={`$${stats.recaudado}`} icon={<DollarSign />} color="bg-azul" textColor="text-dorado" />
+        <StatCard title="Recaudación" value={`$${stats.recaudado}`} icon={<DollarSign />} color="bg-azul" textColor="text-coral" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -85,13 +85,13 @@ export default function DashboardPage() {
         </div>
 
         {/* 3. Bloc de Notas Rápidas (Estilo Post-it Legal) */}
-        <div className="bg-azul p-6 rounded-2xl shadow-xl flex flex-col border border-dorado/20">
+        <div className="bg-azul p-6 rounded-2xl shadow-xl flex flex-col">
           <div className="flex items-center gap-2 mb-4">
             <StickyNote className="text-dorado" />
-            <h2 className="text-xl font-bold text-beige uppercase text-dorado">Notas del día</h2>
+            <h2 className="text-xl font-bold uppercase text-beige">Notas del día</h2>
           </div>
           <textarea
-            className="flex-1 w-full p-4 bg-gris/10 rounded-xl border border-dorado/30 text-beige resize-none focus:outline-none focus:border-dorado transition-colors placeholder:text-beige/30"
+            className="flex-1 w-full p-4 bg-gris/20 rounded-xl text-beige resize-none focus:outline-none focus:border-dorado transition-colors placeholder:text-dorado"
             placeholder="Anota aquí expedientes, recordatorios o tareas..."
             value={nota}
             onChange={handleNoteChange}
@@ -111,12 +111,12 @@ interface StatCardProps {
 }
 function StatCard({ title, value, icon, color, textColor }: StatCardProps) {
   return (
-    <div className={`${color} p-6 rounded-2xl shadow-lg border border-dorado/10 flex items-center gap-5 hover:scale-[1.02] transition-transform`}>
-      <div className={`p-4 rounded-xl bg-gris/20 ${textColor}`}>
+    <div className={`${color} p-6 rounded-2xl shadow-lg  flex items-center gap-5 hover:scale-[1.02] transition-transform`}>
+      <div className={`p-4 rounded-xl bg-gris/30 ${textColor}`}>
         {icon}
       </div>
       <div>
-        <p className="text-beige/60 text-xs font-bold uppercase tracking-widest">{title}</p>
+        <p className="text-beige text-xs font-bold uppercase tracking-widest">{title}</p>
         <p className={`text-3xl font-bold ${textColor}`}>{value}</p>
       </div>
     </div>

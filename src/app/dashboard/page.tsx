@@ -1,104 +1,123 @@
 'use client'
 import { useEffect, useState } from 'react'
 import api from '../../lib/axios'
-import { useRouter } from 'next/navigation' // Importamos el "conduce-páginas"
+import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/Button'
-import { Users, Briefcase, DollarSign } from 'lucide-react'
-interface StatCardProps {
-  title: string;
-  value: string | number;
-  icon: React.ReactNode; // Este es el tipo especial para componentes o íconos
-  color: string;
-}
-interface Cliente {
-  id: string;
-  nombre: string;
-  apellido: string;
-  dni: string;
-  email: string;
-  telefono: string;
-  direccion?: string; // El '?' significa que es opcional
-  clasificacion?: string;
-  estudio_id: string;
-  created_at: string;
-  // No incluimos 'casos' aquí a menos que los necesites mostrar en la lista principal
-}
+import { Users, Briefcase, DollarSign, StickyNote, CalendarDays, ChevronRight } from 'lucide-react'
+
 export default function DashboardPage() {
-  const [clientes, setClientes] = useState([])
   const router = useRouter()
-const [stats, setStats] = useState({ clientes: 0, casos: 0, recaudado: 0 })
+  const [stats, setStats] = useState({ clientes: 0, casos: 0, recaudado: 0 })
+  const [nota, setNota] = useState<string>('')
+
   useEffect(() => {
-  const cargarTodo = async () => {
-    try {
-      // Ejecutamos ambas peticiones en paralelo y esperamos a que AMBAS terminen
-      const [resClientes, resStats] = await Promise.all([
-        api.get('/clientes'),
-        api.get('/dashboard/stats')
-      ]);
+    // Recuperar nota del localStorage al cargar
+    const savedNote = localStorage.getItem('legalflow_quick_note')
+    if (savedNote) setNota(savedNote)
 
-      console.log("Clientes recibidos:", resClientes.data);
-      console.log("Stats recibidas:", resStats.data);
-
-      // Seteamos los estados uno tras otro
-      setClientes(resClientes.data);
-      setStats(resStats.data);
-    } catch (error) {
-      console.error("Error cargando el Dashboard:", error);
+    const cargarStats = async () => {
+      try {
+        const resStats = await api.get('/dashboard/stats')
+        setStats(resStats.data)
+      } catch (error) {
+        console.error("Error stats:", error)
+      }
     }
-  };
+    cargarStats()
+  }, [])
 
-  cargarTodo();
-}, []);
+  // Guardar nota automáticamente mientras escribes
+  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const val = e.target.value
+    setNota(val)
+    localStorage.setItem('legalflow_quick_note', val)
+  }
+
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold text-slate-800 mb-8">Panel de Control</h1>
+    <div className="p-8 bg-beige min-h-screen font-lexend text-beige">
       
-      {/* Tarjetas de Métricas */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <StatCard title="Clientes" value={stats.clientes} icon={<Users />} color="bg-blue-500" />
-        <StatCard title="Casos Activos" value={stats.casos} icon={<Briefcase />} color="bg-purple-500" />
-        <StatCard title="Recaudación" value={`$${stats.recaudado}`} icon={<DollarSign />} color="bg-emerald-500" />
-      </div>
-
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-        <h2 className="text-xl font-semibold mb-4 text-black">Próximas Acciones</h2>
-        <p className="text-slate-500 text-sm">Aquí podrías listar las audiencias de hoy o tareas pendientes.</p>
-      </div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-black">MIS CLIENTES</h1>
-        
-        {/* Este botón hace la magia */}
-        <Button variant="primary"
-          onClick={() => router.push('/dashboard/clientes/nuevo')}>
-          + AGREGAR CLIENTE NUEVO
+      {/* Encabezado */}
+      <div className="flex justify-between items-end mb-8 border-b border-azul pb-4">
+        <div>
+          <h1 className="text-4xl font-bold text-azul uppercase tracking-tighter">Panel de Control</h1>
+          <p className="text-azul/80 font-medium">Gestión integral de tu estudio</p>
+        </div>
+        <Button 
+          variant="primary"
+          onClick={() => router.push('/dashboard/clientes/nuevo')}
+        >
+          + NUEVO CLIENTE
         </Button>
       </div>
       
-      <div className="grid gap-4">
-        {clientes.length === 0 ? (
-          <p>No hay clientes para este estudio jurídico.</p>
-        ) : (
-          clientes.map((cliente: Cliente) => (
-            <div key={cliente.id} className="p-4 border rounded shadow-sm bg-white text-black">
-              <p className="font-bold">{cliente.nombre}</p>
-              <p className="text-sm text-gray-600">DNI: {cliente.dni}</p>
+      {/* 1. Tarjetas de Métricas con tu Contraste Azul/Dorado */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <StatCard title="Clientes" value={stats.clientes} icon={<Users />} color="bg-azul" textColor="text-dorado" />
+        <StatCard title="Casos Activos" value={stats.casos} icon={<Briefcase />} color="bg-azul" textColor="text-esmeralda" />
+        <StatCard title="Recaudación" value={`$${stats.recaudado}`} icon={<DollarSign />} color="bg-azul" textColor="text-dorado" />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        {/* 2. Actividades de la Semana */}
+        <div className="bg-azul p-6 rounded-2xl shadow-xl">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-2">
+              <CalendarDays className="text-dorado" />
+              <h2 className="text-xl font-bold text-beige uppercase">Agenda Semanal</h2>
             </div>
-          ))
-        )}
+            <button onClick={() => router.push('/dashboard/calendario')} className="text-dorado text-sm font-bold hover:underline flex items-center">
+              VER CALENDARIO <ChevronRight size={16} />
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {/* Ejemplo de item de agenda */}
+            <div className="flex items-center p-4 bg-gris/20 rounded-xl border-l-4 border-dorado hover:bg-gris/30 transition-all cursor-pointer">
+              <div className="w-16 text-center border-r border-beige/20 mr-4">
+                <p className="text-[10px] text-dorado font-bold">LUN</p>
+                <p className="text-xl font-bold text-beige">16</p>
+              </div>
+              <p className="font-medium text-beige flex-1">Audiencia Preliminar - García vs. Seguros</p>
+              <span className="text-[10px] bg-esmeralda text-azul px-2 py-1 rounded font-bold">JUZGADO</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. Bloc de Notas Rápidas (Estilo Post-it Legal) */}
+        <div className="bg-azul p-6 rounded-2xl shadow-xl flex flex-col border border-dorado/20">
+          <div className="flex items-center gap-2 mb-4">
+            <StickyNote className="text-dorado" />
+            <h2 className="text-xl font-bold text-beige uppercase text-dorado">Notas del día</h2>
+          </div>
+          <textarea
+            className="flex-1 w-full p-4 bg-gris/10 rounded-xl border border-dorado/30 text-beige resize-none focus:outline-none focus:border-dorado transition-colors placeholder:text-beige/30"
+            placeholder="Anota aquí expedientes, recordatorios o tareas..."
+            value={nota}
+            onChange={handleNoteChange}
+          />
+        </div>
+
       </div>
     </div>
-    
   )
 }
-function StatCard({ title, value, icon, color }: StatCardProps) {
+interface StatCardProps {
+  title: string;
+  value: string | number;
+  icon: React.ReactNode;
+  color: string;
+  textColor: string;
+}
+function StatCard({ title, value, icon, color, textColor }: StatCardProps) {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-5">
-      <div className={`${color} p-4 rounded-xl text-white shadow-lg`}>
+    <div className={`${color} p-6 rounded-2xl shadow-lg border border-dorado/10 flex items-center gap-5 hover:scale-[1.02] transition-transform`}>
+      <div className={`p-4 rounded-xl bg-gris/20 ${textColor}`}>
         {icon}
       </div>
       <div>
-        <p className="text-slate-500 text-sm font-medium">{title}</p>
-        <p className="text-2xl font-bold text-slate-800">{value}</p>
+        <p className="text-beige/60 text-xs font-bold uppercase tracking-widest">{title}</p>
+        <p className={`text-3xl font-bold ${textColor}`}>{value}</p>
       </div>
     </div>
   )

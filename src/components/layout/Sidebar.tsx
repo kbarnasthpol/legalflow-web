@@ -52,10 +52,10 @@ export default function Sidebar() {
           className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300   ${
             pathname === '/dashboard/configuracion' 
               ? 'bg-dorado text-azul shadow-lg shadow-gris ' 
-              : 'hover:bg-beige hover:text-azul text-beige'
+              : 'hover:bg-beige hover:text-azul text-beige hover:scale-[1.10]'
           }`}
         >
-          <div className="flex items-center gap-3 group-hover:translate-x-[5px]">
+          <div className="flex items-center gap-3 group-hover:translate-x-[10px] group-hover:scale-110">
             <Settings 
               size={20} 
               className="transition-all group-hover:animate-spin"
@@ -68,10 +68,10 @@ export default function Sidebar() {
         {/* Botón de Cerrar Sesión con mano saludando sin parar */}
        <button 
   onClick={() => console.log("Cerrando sesión...")}
-  className="w-full group flex items-center justify-between p-3 rounded-lg transition-all duration-300 text-coral hover:bg-coral hover:text-beige mt-1"
+  className="w-full group flex items-center justify-between p-3 rounded-lg transition-all duration-300 text-coral hover:bg-coral hover:text-beige mt-1 hover:scale-[1.10]"
 >
-  <div className="flex items-center gap-3 group-hover:translate-x-[5px]">
-    <LogOut size={20} className="transition-transform duration-300 group-hover:scale-110" />
+  <div className="flex items-center gap-3 group-hover:translate-x-[5px] ">
+    <LogOut size={20} className="transition-transform duration-300 group-hover:translate-x-[10px] group-hover:scale-110 " />
     <span className="font-medium uppercase">CERRAR SESIÓN</span>
   </div>
 

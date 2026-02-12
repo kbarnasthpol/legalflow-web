@@ -27,12 +27,12 @@ export default function Sidebar() {
   return (
     <div className="w-64 bg-azul h-screen text-beige p-4 fixed left-0 top-0 flex flex-col font-lexend">
       {/* Logo / Título */}
-      <div className="mb-10 p-2 text-2xl font-bold border-b border-gris text-beige">
+      <div className="mb-10 p-2 text-2xl font-bold border-b border-gris text-beige text-center">
         LEGALFLOW
       </div>
       
       {/* Navegación Principal */}
-      <nav className="space-y-2 flex-1">
+      <nav className="space-y-2 flex-1 ">
         {menuItems.map((item) => (
           <SidebarItem 
             key={item.name}
@@ -49,7 +49,7 @@ export default function Sidebar() {
         {/* Ítem de Configuración con engranaje giratorio */}
         <Link
           href="/dashboard/configuracion"
-          className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300  ${
+          className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300   ${
             pathname === '/dashboard/configuracion' 
               ? 'bg-dorado text-azul shadow-lg shadow-gris ' 
               : 'hover:bg-beige hover:text-azul text-beige'

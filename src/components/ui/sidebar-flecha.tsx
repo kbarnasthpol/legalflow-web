@@ -11,15 +11,15 @@ interface SidebarItemProps {
 
 export default function SidebarItem({ href, icon: Icon, label, isActive }: SidebarItemProps) {
   return (
-    <Link 
+    <Link
       href={href}
-      className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${
+      className={`group flex items-center justify-between p-3 rounded-lg transition-all duration-300  ${
         isActive 
-          ? 'bg-dorado text-azul shadow-lg shadow-gris' 
-          : 'hover:bg-beige hover:text-azul text-beige'
+          ? 'bg-dorado text-azul shadow-gris ' 
+          : 'hover:bg-beige hover:text-azul text-beige '
       }`}
     >
-      <div className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-[5px]">
+      <div className="flex items-center gap-3 transition-transform duration-200 group-hover:translate-x-[5px] ">
         <Icon size={20} />
         <span className="font-medium uppercase tracking-wider">{label}</span>
       </div>

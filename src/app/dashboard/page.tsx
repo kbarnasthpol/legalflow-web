@@ -68,7 +68,7 @@ const [stats, setStats] = useState({ clientes: 0, casos: 0, recaudado: 0 })
         <h1 className="text-2xl font-bold text-black">MIS CLIENTES</h1>
         
         {/* Este botón hace la magia */}
-        <Button variant="success"
+        <Button variant="primary"
           onClick={() => router.push('/dashboard/clientes/nuevo')}>
           + AGREGAR CLIENTE NUEVO
         </Button>

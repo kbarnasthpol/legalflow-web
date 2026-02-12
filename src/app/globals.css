@@ -20,6 +20,8 @@ body {
   background-color: var(--color-beige);
   color: var(--color-beige);
   font-family: var(--font-sans);
+  border-width: 3px;
+  border-style: dotted;
 }
 @keyframes wave {
   0%   { transform: rotate(0deg); }

@@ -26,7 +26,7 @@ export default function Button({
 
   // Variantes usando tu paleta personalizada
  const variants = {
-    primary: "bg-azul text-beige hover:bg-beige shadow-sm hover:text-azul hover:border-azul",
+    primary: "bg-azul text-beige hover:bg-dorado shadow-azul hover:text-azul hover:border-azul",
     success: "bg-esmeralda text-beige hover:border-beige shadow-sm",
     danger: "bg-coral text-beige hover:border-gris shadow-sm",
     outline: "border-2 border-gris text-gris hover:bg-beige bg-beige hover:text-beige"

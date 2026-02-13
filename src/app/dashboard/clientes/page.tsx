@@ -119,13 +119,13 @@ export default function ClientesPage() {
               <div className="flex gap-2 pt-4 border-t border-azul/5">
                 <button 
                   onClick={() => router.push(`/dashboard/casos?clienteId=${cliente.id}`)}
-                  className="flex-1 flex items-center justify-center gap-2 py-2 bg-azul text-beige rounded-xl hover:bg-azul/90 transition-colors text-xs font-bold uppercase"
+                  className="flex-1 flex items-center justify-center gap-2 py-2 bg-azul text-beige rounded-xl hover:bg-dorado hover:text-azul transition-colors text-xs font-bold uppercase hover:border-azul/50 border-2"
                 >
                   <FolderOpen size={14} /> Expedientes
                 </button>
                 <button 
                   onClick={() => router.push(`/dashboard/pagos?clienteId=${cliente.id}`)}
-                  className="flex-1 flex items-center justify-center gap-2 py-2 border-2 border-azul/10 text-azul rounded-xl hover:bg-azul hover:text-beige transition-all text-xs font-bold uppercase"
+                  className="flex-1 flex items-center justify-center gap-2 py-2 border-2 border-azul/50 text-azul rounded-xl hover:bg-dorado hover:text-azul transition-all text-xs font-bold uppercase"
                 >
                   <CreditCard size={14} /> Pagos
                 </button>
